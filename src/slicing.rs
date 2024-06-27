@@ -26,18 +26,19 @@ pub fn utf8_slice<'a>(
     let end_pos = match string.char_indices().nth(end) {
         Some(v) => v.0,
         None => {
-            if let Some(v) = string.char_indices().nth_back(0) {
-                v.0
-            } else {
-                eprintln!(
-                    "Both slice end position {} and string end could not be found",
-                    end
-                );
-                return Err(
-                    "Slice end position could not be found or no end indice could be retrieved"
-                        .into(),
-                );
-            }
+            string.len()
+            // if let Some(v) = string.char_indices().nth_back(0) {
+            //     v.0
+            // } else {
+            //     eprintln!(
+            //         "Both slice end position {} and string end could not be found",
+            //         end
+            //     );
+            //     return Err(
+            //         "Slice end position could not be found or no end indice could be retrieved"
+            //             .into(),
+            //     );
+            // }
         }
     };
 
