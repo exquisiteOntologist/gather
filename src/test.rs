@@ -45,3 +45,10 @@ fn test_slicer_multiple() {
         assert_eq!(expected, actual);
     }
 }
+
+#[test]
+fn readme_test() {
+    let cool_days: &str = "Cool days";
+    let cool = cool_days.nice_slice(0, 4);
+    assert_eq!(cool, "Cool");
+}
