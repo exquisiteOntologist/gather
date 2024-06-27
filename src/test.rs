@@ -61,7 +61,9 @@ const TEXT_HEBREW: &str = "אני אוהב אותך כל כך";
 #[test]
 fn test_languages() {
     // p last char before word, p last char of word
+    assert_eq!(TEXT_ENGLISH[2..6].to_owned(), "love");
     assert_eq!(TEXT_ENGLISH.nice_slice(2, 6), "love");
+    // see next test to demonstrate that the others panic without our slicer
     assert_eq!(TEXT_ARABIC.nice_slice(0, 1), "أ");
     assert_eq!(TEXT_JAPANESE.nice_slice(0, 5), "あなたをと");
     assert_eq!(TEXT_CZECH.nice_slice(5, 11), "ě milu");
@@ -71,6 +73,13 @@ fn test_languages() {
     assert_eq!(TEXT_SPANISH.nice_slice(6, 12), " mucho");
     assert_eq!(TEXT_VIETNAMESE.nice_slice(11, 19), "rất nhiề");
     assert_eq!(TEXT_HEBREW.nice_slice(1, 5), "ני א");
+}
+
+#[should_panic]
+#[test]
+fn test_failing_languages() {
+    assert_ne!(TEXT_ARABIC[0..1].to_string(), "أ");
+    assert_ne!(TEXT_JAPANESE[0..5].to_string(), "あなたをと");
 }
 
 #[test]
