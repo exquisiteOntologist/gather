@@ -39,8 +39,8 @@ pub fn utf8_slice<'a>(
         return Err("This function assumes you are slicing from smallest to largest. Received largest to smallest instead.".into());
     }
 
-    // note you may want to trim any resulting whitespace,
-    // trimming may cause slight confusion depending on what you're expecting
+    // note that we don't trim within this function,
+    // as trimming may cause slight confusion depending on what you're expecting
     let sliced = &string[start_pos..end_pos];
 
     Ok(sliced)
